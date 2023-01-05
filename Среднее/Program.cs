@@ -43,7 +43,7 @@ Console.WriteLine($"Сумма чисел {тест.Сумма()};" +
 
 
 
-
+СписокInt.Test(new double[] { 3d, 5d,6d });
 
 
 

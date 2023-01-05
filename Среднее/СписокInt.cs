@@ -103,12 +103,21 @@ namespace Среднее
         {
             int?[] реверс = new int?[масив.Length];
             int[] БЕЗNULL = ПолучитьМассив();
-            for(int i = БЕЗNULL.Length-1, j=0; i>= 0 && j<Количество;  i--, j++)
+            for(int i = БЕЗNULL.Length-1, j=0; i>= 0 && j< реверс.Length;  i--, j++)
             {
                 реверс[i] = масив[j];
             }
             масив = реверс;
         }
+
+        public static void Test(Double[] value)
+        {
+            int[] Незнаю = new int[5];
+
+
+        }
+
+       
        
     }
 }
