@@ -1,51 +1,61 @@
 ﻿using System.Globalization;
 using Среднее;
 
-СписокInt тест = new СписокInt();
 
 
-
-
-while (true)
+class Program
 {
-    Console.WriteLine($"Напишите число {тест.Количество + 1}");
-    string? one = Console.ReadLine();
-    if (one == "")
+    static public void Main(String[] args)
     {
-        Console.WriteLine("Вод приостоновленым пользователем");
-        break;
-    }
-    if (int.TryParse(one, out int value))
-    {
-        тест.Добавить(value);
+        СписокInt тест = new СписокInt() {  Инциализация=2};
+        
 
+
+        
+
+        ВодДанных(тест);
+
+        тест= тест.Положительные();
+
+        ВывестиДанные(тест);
+        тест.Реверс();
+        ВывестиДанные(тест);
+
+        Console.ReadKey();
+    }
+    
+      
+
+
+
+    static void ВывестиДанные(СписокInt данные)
+    {
+        int[] масив = данные.ПолучитьМассив();
+        Console.Write($"Массив из {масив.Length} элементов. ");
+        foreach (int p in масив)
+            Console.Write($" {p};");
+
+        Console.WriteLine();
+        Console.WriteLine($"Сумма чисел {данные.Сумма()};" +
+            $" Среднее {данные.Среднее()}; Максимум {данные.Максимум()}; Минимум {данные.Минимум()} ");
+    }
+
+    static void ВодДанных(СписокInt данные)
+    {
+        while (true)
+        {
+            Console.WriteLine($"Напишите число {данные.Количество + 1}");
+            string? one = Console.ReadLine();
+            if (one == "")
+            {
+                Console.WriteLine("Вод приостоновленым пользователем");
+                break;
+            }
+            if (int.TryParse(one, out int value))
+            {
+                данные.Добавить(value);
+
+            }
+        }
     }
 }
-
-int[] масив = тест.ПолучитьМассив();
-Console.Write($"Массив из {масив.Length} элементов. ");
-foreach (int p in масив)
-    Console.Write($" {p};");
-
-Console.WriteLine();
-Console.WriteLine($"Сумма чисел {тест.Сумма()};" +
-    $" Среднее {тест.Среднее()}; Максимум {тест.Максимум()}; Минимум {тест.Минимум()} ") ;
-
-тест.Реверс();
-int[] масив2 = тест.ПолучитьМассив();
-Console.Write($"Массив из {масив2.Length} элементов. ");
-foreach (int p in масив2)
-    Console.Write($" {p};");
-
-Console.WriteLine();
-Console.WriteLine($"Сумма чисел {тест.Сумма()};" +
-    $" Среднее {тест.Среднее()}; Максимум {тест.Максимум()}; Минимум {тест.Минимум()} ");
-
-
-
-СписокInt.Test(new double[] { 3d, 5d,6d });
-
-
-
-Console.ReadKey();
-

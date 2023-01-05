@@ -8,10 +8,35 @@ namespace Среднее
 {
     class СписокInt
     {
+        public int this[int index]
+        {
+            get
+            {
+                int? знач = масив[index];
+                if (знач.HasValue)
+                    return знач.Value;
+                else
+                    throw new Exception("Значений с этом индексом нету");
+            }
+            set
+            {
+                if (index < Количество)
+                {
+                    масив[index] = value;
+                }
+                else
+                    throw new Exception("Значений с этом индексом нету");
+            }
+        }
+
+
+
         private int?[] масив= new int?[2];  
         
         public int?[] Массив { get => масив; set => масив = value; }
         public int Количество { get; private set; }
+
+        public int Инциализация { get; init ; }
         public СписокInt()
         {
 
@@ -110,14 +135,30 @@ namespace Среднее
             масив = реверс;
         }
 
-        public static void Test(Double[] value)
+       public СписокInt Положительные()
         {
-            int[] Незнаю = new int[5];
+            return Положительные(this);
+
+
+        }
+        СписокInt Положительные(СписокInt данные)
+        {
+            СписокInt полож = new СписокInt();
+
+            for (int i = 0; i < данные.Количество; i++)
+            {
+                int знач = данные[i];
+                if (знач > 0)
+                {
+                    полож.Добавить(знач);
+                }
+            }
+            return полож;
 
 
         }
 
-       
-       
+
+
     }
 }
